@@ -76,7 +76,7 @@ function deployEvent() {
         cached.eventAddress = address;
         let EventContract = new web3.eth.Contract(Event.abi, address);
 
-        EventContract.methods.onDeposit("ST5", 1000, MAIN_CONTRACT, STORAGE_CONTRACT)
+        EventContract.methods.onChange(1, 1, MAIN_CONTRACT, STORAGE_CONTRACT, 1000)
         .send({from: MAIN_CONTRACT})
         .on("transactionHash", function(hash) {
             console.log("Firing onDeposit Event: %s", hash);
@@ -144,7 +144,7 @@ function getToken(val) {
 
 function deposit(callback) {
     console.log("Start deposit");
-    SIMContract.methods.deposit(1000).send({
+    SIMContract.methods.deposit(1, 1000).send({
         from: MAIN_CONTRACT
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for deposit: %s", hash);
@@ -175,6 +175,9 @@ function release() {
 }
 
 
+// release();
+
+
 function runTest() {
     // make sure deposit completes before release
     deposit(function() {
@@ -183,7 +186,7 @@ function runTest() {
 }
 
 
-deployEvent();
-newToken();
+// deployEvent();
+// newToken();
 // deploySIMContract();
 // runTest();
