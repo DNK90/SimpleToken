@@ -23,10 +23,10 @@ contract SIMDepositRelease {
     	return eventAddress.call(bytes4(keccak256("onChange(uint256,uint256,address,address,uint256)")), _event, _type, _from, _to, _amount);
     }
 
-	function deposit(uint256 _type, uint256 _amount) public payable {
+	function deposit(uint256 _type, address _receiver, uint256 _amount) public payable {
         uint256 amount = _amount * 10 ** 18;
     	callTransferFrom(msg.sender, storageAddress, amount);
-    	onChange(1, _type, msg.sender, storageAddress, amount);
+    	onChange(1, _type, msg.sender, _receiver, amount);
 	}
 
 	function release(address _receiver, uint256 _amount) public payable {

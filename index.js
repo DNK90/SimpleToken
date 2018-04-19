@@ -144,7 +144,7 @@ function getToken(val) {
 
 function deposit(callback) {
     console.log("Start deposit");
-    SIMContract.methods.deposit(1, 1000).send({
+    SIMContract.methods.deposit(1, RECEIVER, 1000).send({
         from: MAIN_CONTRACT
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for deposit: %s", hash);
@@ -189,4 +189,4 @@ function runTest() {
 // deployEvent();
 // newToken();
 // deploySIMContract();
-// runTest();
+runTest();

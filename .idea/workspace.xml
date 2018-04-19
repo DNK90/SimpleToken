@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3aa2a78a-6912-4267-9d3d-1fa2b787e988" name="Default" comment="" />
+    <list default="true" id="3aa2a78a-6912-4267-9d3d-1fa2b787e988" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/watcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/watcher.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
+            <state relative-caret-position="71">
+              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -39,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="watcher.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="watcher.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/watcher.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="195">
+              <caret line="46" column="39" lean-forward="true" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -120,12 +124,15 @@
       <replace>let</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/node_modules/truffle-contract/statuserror.js" />
-        <option value="$PROJECT_DIR$/watcher.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/watcher.js" />
       </list>
     </option>
   </component>
@@ -146,10 +153,13 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1442" />
-    <option name="y" value="-433" />
-    <option name="width" value="1547" />
-    <option name="height" value="870" />
+    <option name="x" value="51" />
+    <option name="y" value="51" />
+    <option name="width" value="1172" />
+    <option name="height" value="682" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -206,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.index.js">
+  <component name="RunManager" selected="Node.js.watcher.js">
     <configuration name="deploy.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="deploy.js" working-dir="$PROJECT_DIR$/node_modules/truffle-deployer/src/actions" />
     <configuration name="index.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="index.js" working-dir="$PROJECT_DIR$" />
     <configuration name="watcher.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="watcher.js" working-dir="$PROJECT_DIR$" />
@@ -217,8 +227,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.index.js" />
         <item itemvalue="Node.js.watcher.js" />
+        <item itemvalue="Node.js.index.js" />
         <item itemvalue="Node.js.deploy.js" />
       </list>
     </recent_temporary>
@@ -235,28 +245,28 @@
       <updated>1523604015092</updated>
       <workItem from="1523604017743" duration="5585000" />
       <workItem from="1523874602337" duration="2192000" />
-      <workItem from="1523895824905" duration="8375000" />
+      <workItem from="1523895824905" duration="9961000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16152000" />
+    <option name="totallyTimeSpent" value="17738000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1442" y="-433" width="1547" height="870" extended-state="0" />
+    <frame x="51" y="51" width="1172" height="682" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.23918742" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.31711555" />
       <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.24838293" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.24786325" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.32988358" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="8" visible="true" weight="0.40232858" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.53162396" />
       <window_info anchor="bottom" id="TypeScript" order="5" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
@@ -290,12 +300,6 @@
           <url>file://$PROJECT_DIR$/node_modules/truffle-deployer/src/actions/deploy.js</url>
           <line>7</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/index.js</url>
-          <line>105</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="25" />
@@ -573,13 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/watcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/truffle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -589,8 +586,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
+        <state relative-caret-position="71">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/watcher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="46" column="39" lean-forward="true" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
         </state>
       </provider>
     </entry>
