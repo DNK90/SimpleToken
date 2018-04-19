@@ -1,0 +1,480 @@
+{
+  "contractName": "ReentrancyAttack",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "data",
+          "type": "bytes4"
+        }
+      ],
+      "name": "callSender",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b61013e8061001e6000396000f300606060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630a2df1ed14610046575b600080fd5b341561005157600080fd5b61008660048080357bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916906020019091905050610088565b005b3373ffffffffffffffffffffffffffffffffffffffff16817c010000000000000000000000000000000000000000000000000000000090046040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160006040518083038160008761646e5a03f192505050151561010f57600080fd5b505600a165627a7a723058201c652b07c312fccc9e193e4366b549452168ce393348c545a65ec112109c91fc0029",
+  "deployedBytecode": "0x606060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630a2df1ed14610046575b600080fd5b341561005157600080fd5b61008660048080357bffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916906020019091905050610088565b005b3373ffffffffffffffffffffffffffffffffffffffff16817c010000000000000000000000000000000000000000000000000000000090046040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160006040518083038160008761646e5a03f192505050151561010f57600080fd5b505600a165627a7a723058201c652b07c312fccc9e193e4366b549452168ce393348c545a65ec112109c91fc0029",
+  "sourceMap": "27:115:55:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:115:55:-;;;;;;;;;;;;;;;;;;;;;;;;58:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;112:10;:15;;128:4;112:21;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;104:30;;;;;;;;58:81;:::o",
+  "source": "pragma solidity ^0.4.18;\n\n\ncontract ReentrancyAttack {\n\n  function callSender(bytes4 data) public {\n    require(msg.sender.call(data));\n  }\n\n}\n",
+  "sourcePath": "/Users/kiendn/coding/tutorial/truffle/deploy_contract_without_cmd/contracts/mocks/ReentrancyAttack.sol",
+  "ast": {
+    "absolutePath": "/Users/kiendn/coding/tutorial/truffle/deploy_contract_without_cmd/contracts/mocks/ReentrancyAttack.sol",
+    "exportedSymbols": {
+      "ReentrancyAttack": [
+        3147
+      ]
+    },
+    "id": 3148,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3132,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:55"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 3147,
+        "linearizedBaseContracts": [
+          3147
+        ],
+        "name": "ReentrancyAttack",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 3145,
+              "nodeType": "Block",
+              "src": "98:41:55",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 3141,
+                            "name": "data",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3134,
+                            "src": "128:4:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes4",
+                              "typeString": "bytes4"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes4",
+                              "typeString": "bytes4"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 3138,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7539,
+                              "src": "112:3:55",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 3139,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "112:10:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "id": 3140,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "call",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "112:15:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_barecall_payable$__$returns$_t_bool_$",
+                            "typeString": "function () payable returns (bool)"
+                          }
+                        },
+                        "id": 3142,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "112:21:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 3137,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7542,
+                      "src": "104:7:55",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 3143,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "104:30:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3144,
+                  "nodeType": "ExpressionStatement",
+                  "src": "104:30:55"
+                }
+              ]
+            },
+            "id": 3146,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "callSender",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3135,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3134,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3146,
+                  "src": "78:11:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 3133,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "78:6:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "77:13:55"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3136,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "98:0:55"
+            },
+            "scope": 3147,
+            "src": "58:81:55",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3148,
+        "src": "27:115:55"
+      }
+    ],
+    "src": "0:143:55"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/kiendn/coding/tutorial/truffle/deploy_contract_without_cmd/contracts/mocks/ReentrancyAttack.sol",
+    "exportedSymbols": {
+      "ReentrancyAttack": [
+        3147
+      ]
+    },
+    "id": 3148,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3132,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:55"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 3147,
+        "linearizedBaseContracts": [
+          3147
+        ],
+        "name": "ReentrancyAttack",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 3145,
+              "nodeType": "Block",
+              "src": "98:41:55",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 3141,
+                            "name": "data",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3134,
+                            "src": "128:4:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes4",
+                              "typeString": "bytes4"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes4",
+                              "typeString": "bytes4"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 3138,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7539,
+                              "src": "112:3:55",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 3139,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "112:10:55",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "id": 3140,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "call",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "112:15:55",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_barecall_payable$__$returns$_t_bool_$",
+                            "typeString": "function () payable returns (bool)"
+                          }
+                        },
+                        "id": 3142,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "112:21:55",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 3137,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7542,
+                      "src": "104:7:55",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 3143,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "104:30:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3144,
+                  "nodeType": "ExpressionStatement",
+                  "src": "104:30:55"
+                }
+              ]
+            },
+            "id": 3146,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "callSender",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3135,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3134,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3146,
+                  "src": "78:11:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 3133,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "78:6:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "77:13:55"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3136,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "98:0:55"
+            },
+            "scope": 3147,
+            "src": "58:81:55",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3148,
+        "src": "27:115:55"
+      }
+    ],
+    "src": "0:143:55"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-04-13T08:54:57.325Z"
+}
