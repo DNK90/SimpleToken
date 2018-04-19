@@ -183,7 +183,7 @@ function runTest() {
 }
 
 
-deploySIMContract();
-// deployEvent();
-// newToken();
+deployEvent();
+newToken();
+// deploySIMContract();
 // runTest();
