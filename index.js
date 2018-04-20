@@ -95,6 +95,8 @@ function transferSIMToken(to, _token) {
     });
 }
 
+// transferSIMToken("0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236", getToken(100000));
+
 function approveAddress(owner, target, cap, callback) {
     SimpleTokenContract.methods.approve(target, cap).send({
         from: owner
@@ -107,6 +109,20 @@ function approveAddress(owner, target, cap, callback) {
         }
     });
 }
+
+function getAllowance(address, callback) {
+    SimpleTokenContract.methods.allowance(address, cached.contractAddress).call().then(function(data) {
+
+        console.log("Finish get allowance for address %s", address);
+        console.log(data);
+        if (callback) {
+            callback();
+        }
+    });
+}
+
+// getAllowance("0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236");
+// approveAddress("0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236", cached.contractAddress, 1000);
 
 function deploySIMContract(tokenAddress, eventAddress, wallet) {
 
@@ -148,7 +164,7 @@ function deposit(callback) {
         from: MAIN_CONTRACT
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for deposit: %s", hash);
-    }).catch(function(err) {
+    }).catch(function(err) {    
         console.log(err);
     }).then(function() {
         console.log("Deposit completed");
@@ -164,7 +180,7 @@ function deposit(callback) {
 function release() {
     console.log("Start releasing");
     SIMContract.methods.release(RECEIVER, 1000).send({
-        from: MAIN_CONTRACT
+        from: "0x99d03467ba3dda65fba71f8337b99ac5496d88dc"
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for release: %s", hash);
     }).catch(function(err) {
@@ -175,7 +191,7 @@ function release() {
 }
 
 
-// release();
+release();
 
 
 function runTest() {
@@ -186,7 +202,17 @@ function runTest() {
 }
 
 
+// web3.eth.signTransaction({
+//     from: "0x69052dCDEaF6a3B5de3771DB24e21f334F9128ac",
+//     gasPrice: "20000000000",
+//     gas: "21000",
+//     data: ""
+// }, '123456').then(console.log);
+
+// console.log(SIMContract.methods.release(RECEIVER, 1000));
+
+
 // deployEvent();
 // newToken();
 // deploySIMContract();
-runTest();
+// runTest();
