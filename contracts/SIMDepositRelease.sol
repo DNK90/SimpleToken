@@ -32,7 +32,7 @@ contract SIMDepositRelease {
 	function release(address _receiver, uint256 _amount) public payable {
 		// _type: 1 is eth, 2 is this
 		uint256 amount = _amount * 10 ** 18;
-		callTransferFrom(msg.sender, _receiver, amount);
-		onChange(2, 2, msg.sender, _receiver, amount);
+		callTransferFrom(storageAddress, _receiver, amount);
+		onChange(2, 2, storageAddress, _receiver, amount);
 	}
 }
