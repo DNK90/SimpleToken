@@ -25,7 +25,7 @@ options = {
 
 
 const STORAGE_CONTRACT = "0xA8805A043A091a5240568f24ff22A3075ed0b507";
-const MAIN_CONTRACT = "0x181a132141D2Bf8D7C14E8df22742b7BC0086CC4";
+const MAIN_CONTRACT = "0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236";
 const RECEIVER = "0x69052dCDEaF6a3B5de3771DB24e21f334F9128ac";
 
 function toBN(n) {
@@ -122,7 +122,7 @@ function getAllowance(address, callback) {
 }
 
 // getAllowance("0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236");
-// approveAddress("0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236", cached.contractAddress, 1000);
+// approveAddress("0xff6781f2cc6F9b6b4A68A0AfC3AaE89133BbB236", cached.contractAddress, getToken(10000));
 
 function deploySIMContract(tokenAddress, eventAddress, wallet) {
 
@@ -160,7 +160,7 @@ function getToken(val) {
 
 function deposit(callback) {
     console.log("Start deposit");
-    SIMContract.methods.deposit(1, RECEIVER, 1000).send({
+    SIMContract.methods.deposit(1, RECEIVER, 123).send({
         from: MAIN_CONTRACT
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for deposit: %s", hash);
@@ -179,7 +179,7 @@ function deposit(callback) {
 
 function release() {
     console.log("Start releasing");
-    SIMContract.methods.release(RECEIVER, 1000).send({
+    SIMContract.methods.release(RECEIVER, 100).send({
         from: "0x99d03467ba3dda65fba71f8337b99ac5496d88dc"
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for release: %s", hash);
@@ -191,7 +191,8 @@ function release() {
 }
 
 
-release();
+// release();
+// deposit();
 
 
 function runTest() {
