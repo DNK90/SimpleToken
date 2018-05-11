@@ -20,6 +20,8 @@ contract SIMDepositRelease {
 	SimpleTokenI tokenAddress;
 	address eventAddress;
 	address storageAddress;
+	mapping(uint256 => uint256[]) rates;
+	address owner;
 
     function() payable {}
 
@@ -27,6 +29,7 @@ contract SIMDepositRelease {
     	tokenAddress = SimpleTokenI(_tokenAddress);
     	eventAddress = _eventAddress;
     	storageAddress = _storageAddress;
+			owner = msg.sender;
     }
 
     function callTransferFrom(address _sender, address _receiver, uint256 _amount) returns (bool) {
@@ -44,10 +47,30 @@ contract SIMDepositRelease {
     	onChange(1, _type, msg.sender, _receiver, amount);
 	}
 
-	function release(address _receiver, uint256 _amount) public payable {
+	function release(address _receiver, uint256 _amount, uint256 _type) public payable {
 		// _type: 1 is eth, 2 is this
-		uint256 amount = _amount * 10 ** 18;
+		uint256 amount = calcAmountRelase(_amount, _type);
 		callTransferFrom(storageAddress, _receiver, amount);
 		onChange(2, 2, storageAddress, _receiver, amount);
 	}
+
+	function getOwner() public constant returns(address) {
+		return owner;
+ 	}
+
+ function updateRating(uint256 code, uint256 newRate) public {
+	 if(address(msg.sender) == owner) {
+		 rates[code].push(newRate);
+	 }
+ }
+
+ function getCurrentRating(uint256 code) public view returns(uint256) {
+	 uint256 length = rates[code].length;
+	 return rates[code][length -1];
+ }
+
+ function calcAmountRelase(uint256 amount, uint256 code) public constant returns(uint256) {
+			 uint256 rate = getCurrentRating(code);
+			 return (amount  * rate/1000);
+	 }
 }
