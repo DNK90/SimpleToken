@@ -23,13 +23,18 @@ contract SIMDepositRelease {
 	mapping(uint256 => uint256[]) rates;
 	address owner;
 
+	modifier onlyadmin {
+		if (msg.sender != owner) throw;
+		_;
+    }
+
     function() payable {}
 
-    function SIMDepositRelease(address _tokenAddress, address _eventAddress, address _storageAddress) {
+    function SIMDepositRelease(address _tokenAddress, address _eventAddress, address _storageAddress, address _owner) {
     	tokenAddress = SimpleTokenI(_tokenAddress);
     	eventAddress = _eventAddress;
     	storageAddress = _storageAddress;
-			owner = msg.sender;
+		owner = _owner;
     }
 
     function callTransferFrom(address _sender, address _receiver, uint256 _amount) returns (bool) {
@@ -41,36 +46,42 @@ contract SIMDepositRelease {
     	return eventAddress.call(bytes4(keccak256("onChange(uint256,uint256,address,address,uint256)")), _event, _type, _from, _to, _amount);
     }
 
-	function deposit(uint256 _type, address _receiver, uint256 _amount) public payable {
+	function deposit(uint256 _type, address _receiver, uint256 _amount) public {
+
+		require(_amount > 0);
+
         uint256 amount = _amount * 10 ** 18;
     	bool result = callTransferFrom(msg.sender, storageAddress, amount);
     	onChange(1, _type, msg.sender, _receiver, amount);
 	}
 
-	function release(address _receiver, uint256 _amount, uint256 _type) public payable {
+	function release(address _receiver, uint256 _amount, uint256 _type) public onlyadmin {
 		// _type: 1 is eth, 2 is this
-		uint256 amount = calcAmountRelase(_amount, _type);
+		uint256 rate = rates[_type][rates[_type].length - 1];
+		
+		require(rate > 0);
+		require(_amount > 0);
+
+		uint256 amount = (_amount * 10 ** 18) * (rate/1000);
+
 		callTransferFrom(storageAddress, _receiver, amount);
-		onChange(2, 2, storageAddress, _receiver, amount);
+		onChange(2, _type, storageAddress, _receiver, amount);
 	}
 
-	function getOwner() public constant returns(address) {
-		return owner;
- 	}
+	function getLatestRate(uint256 _type) public returns (uint256) {
+		return rates[_type][rates[_type].length - 1];
+	}
 
- function updateRating(uint256 code, uint256 newRate) public {
-	 if(address(msg.sender) == owner) {
-		 rates[code].push(newRate);
-	 }
- }
+	function getRate(uint256 _type, uint256 _idx) public returns (uint256){
+		require(_idx < rates[_type].length);
+		return rates[_type][_idx];
+	}
 
- function getCurrentRating(uint256 code) public view returns(uint256) {
-	 uint256 length = rates[code].length;
-	 return rates[code][length -1];
- }
+	function getRates(uint256 _type) public returns (uint256[]) {
+		return rates[_type];
+	}
 
- function calcAmountRelase(uint256 amount, uint256 code) public constant returns(uint256) {
-			 uint256 rate = getCurrentRating(code);
-			 return (amount  * rate/1000);
-	 }
+	function updateRating(uint256 _code, uint256 _newRate) public onlyadmin {
+		rates[_code].push(_newRate);
+	}
 }

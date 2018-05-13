@@ -128,7 +128,7 @@ function deploySIMContract(tokenAddress, eventAddress, wallet) {
 
     console.log("Start deploying new SIMContract");
 
-    SIMContractRaw.new(cached.tokenAddress, cached.eventAddress, STORAGE_CONTRACT).then(function(result) {
+    SIMContractRaw.new(cached.tokenAddress, cached.eventAddress, STORAGE_CONTRACT, MAIN_CONTRACT).then(function(result) {
         let address = result.address;
         console.log("New contract has been created at %s", address);
 
@@ -160,7 +160,7 @@ function getToken(val) {
 
 function deposit(callback) {
     console.log("Start deposit");
-    SIMContract.methods.deposit(1, RECEIVER, 123).send({
+    SIMContract.methods.deposit(2, RECEIVER, 123).send({
         from: MAIN_CONTRACT
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for deposit: %s", hash);
@@ -177,10 +177,36 @@ function deposit(callback) {
 }
 
 
+function getLatestRate(callback) {
+    console.log("Start get latest rate");
+    SIMContract.methods.getLatestRate(2).call().catch(function(err) {
+        console.log(err);
+    }).then(function(result) {
+        callback(result);
+    });
+}
+
+
+function addNewRate(callback) {
+    console.log("Start adding new rate");
+    // real rate = rate/1000 => add to params 1000
+    SIMContract.methods.updateRating(2, 1000).send({
+        from: MAIN_CONTRACT
+    }).on("transactionHash", function(hash) {
+        console.log("transactionHash for addNewRate: %s", hash);
+    }).catch(function(err) {
+        console.log(err);
+    }).then(function() {
+        console.log("addNewRate completed");
+        callback();
+    });
+}
+
+
 function release() {
     console.log("Start releasing");
-    SIMContract.methods.release(RECEIVER, 100).send({
-        from: "0x99d03467ba3dda65fba71f8337b99ac5496d88dc"
+    SIMContract.methods.release(RECEIVER, 100, 2).send({
+        from: MAIN_CONTRACT
     }).on("transactionHash", function(hash) {
         console.log("transactionHash for release: %s", hash);
     }).catch(function(err) {
@@ -191,29 +217,33 @@ function release() {
 }
 
 
-// release();
-// deposit();
-
-
 function runTest() {
     // make sure deposit completes before release
     deposit(function() {
-        release();
+
+        let rate = getLatestRate(function(r) {
+            if (!r) {
+                addNewRate(function() {
+                    release();
+                });
+            } else {
+                release();
+            }
+        });
+
     });
 }
 
 
-// web3.eth.signTransaction({
-//     from: "0x69052dCDEaF6a3B5de3771DB24e21f334F9128ac",
-//     gasPrice: "20000000000",
-//     gas: "21000",
-//     data: ""
-// }, '123456').then(console.log);
-
-// console.log(SIMContract.methods.release(RECEIVER, 1000));
-
+/**
+    UNCOMMENT THE FOLLOWING FUNCTIONS TO DO YOUR TEST
+    CONFIGURE ADDRESS ACCOUNT IN "truffle.js" FOR DEPLOYING CONTRACT PURPOSE 
+**/
 
 // deployEvent();
 // newToken();
 // deploySIMContract();
 // runTest();
+// release();
+// deposit();
+// getLatestRate();
