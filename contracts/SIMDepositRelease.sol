@@ -50,7 +50,7 @@ contract SIMDepositRelease {
 
 		require(_amount > 0);
 
-        uint256 amount = _amount * 10 ** 18;
+        uint256 amount = _amount;
     	bool result = callTransferFrom(msg.sender, storageAddress, amount);
     	onChange(1, _type, msg.sender, _receiver, amount);
 	}
@@ -62,7 +62,7 @@ contract SIMDepositRelease {
 		require(rate > 0);
 		require(_amount > 0);
 
-		uint256 amount = (_amount * 10 ** 18) * (rate/1000);
+		uint256 amount = _amount * (rate/1000);
 
 		callTransferFrom(storageAddress, _receiver, amount);
 		onChange(2, _type, storageAddress, _receiver, amount);
